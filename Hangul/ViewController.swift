@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var topSymbolOutlet: UILabel!
 
     @IBAction func touchSymbol(_ sender: UIButton) {
-        if topSymbolOutlet.text == sender.titleLabel?.text {
-            
+        if let topSymbol = topSymbolOutlet.text {
+            if hangulSymbols[topSymbol] == sender.titleLabel?.text {
+                sender.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            } else {
+                sender.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            }
         }
+
     }
     
     
