@@ -10,11 +10,59 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var topSymbolOutlet: UILabel!
+
+    @IBAction func touchSymbol(_ sender: UIButton) {
+        if topSymbolOutlet.text == sender.titleLabel?.text {
+            
+        }
+    }
+    
+    
+    @IBOutlet var symbolButtons: [UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        refreshSymbols()
     }
-
-
+    
+    private func refreshSymbols() {
+        let randomSymbols = hangulSymbols.shuffled()[..<4]
+        print(randomSymbols)
+        topSymbolOutlet.text = randomSymbols[0].key
+        var index = 0
+        for button in symbolButtons.shuffled() {
+            button.setTitle(randomSymbols[index].value, for: UIControl.State.normal)
+            index += 1
+        }
+   
+    }
+    
+    private var hangulSymbols = ["ㄱ":"g",
+                                 "ㄴ":"n",
+                                 "ㄷ":"d",
+                                 "ㄹ":"l/r",
+                                 "ㅁ":"m",
+                                 "ㅂ":"b",
+                                 "ㅅ":"s",
+                                 "ㅇ":"ng",
+                                 "ㅈ":"j",
+                                 "ㅊ":"ch",
+                                 "ㅋ":"k",
+                                 "ㅌ":"t",
+                                 "ㅍ":"p",
+                                 "ㅎ":"h",
+                                 "ㅏ":"a",
+                                 "ㅑ":"ya",
+                                 "ㅓ":"eo",
+                                 "ㅕ":"yeo",
+                                 "ㅗ":"o",
+                                 "ㅛ":"yo",
+                                 "ㅜ":"u",
+                                 "ㅠ":"yu",
+                                 "ㅡ":"eu",
+                                 "ㅣ":"i"]
+    private var chosenSymbols = [String]()
 }
 
