@@ -21,10 +21,18 @@ class ViewController: UIViewController {
                 letterKeys.enqueue(topLetter)
             }
         }
-        if !letterKeys.isEmpty {
-            refreshSymbols()
-        } else {
-            print("You win!")
+        UIView.animate(withDuration: 0.3, delay: 0.3, options: [], animations: {
+            self.view.alpha = 0
+        }) { (_) in
+            if !self.letterKeys.isEmpty {
+                self.refreshSymbols()
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                self.view.alpha = 1
+            }) { (_) in
+                }
+            } else {
+                print("You win!")
+            }
         }
 
     }
@@ -61,6 +69,7 @@ class ViewController: UIViewController {
 
         for (button, letterKey) in zip(letterButtons, randomLetters.shuffled()) {
             button.setTitle(hangulLetters[letterKey], for: UIControl.State.normal)
+            button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
    
     }
