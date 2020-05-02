@@ -10,41 +10,64 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var topSymbolOutlet: UILabel!
+    @IBOutlet weak var mainLetterOutlet: UILabel!
 
-    @IBAction func touchSymbol(_ sender: UIButton) {
-        if let topSymbol = topSymbolOutlet.text {
-            if hangulSymbols[topSymbol] == sender.titleLabel?.text {
+    @IBAction func touchUpLetter(_ sender: UIButton) {
+        if let topLetter = mainLetterOutlet.text {
+            if hangulLetters[topLetter] == sender.titleLabel?.text {
                 sender.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             } else {
                 sender.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+                letterKeys.enqueue(topLetter)
             }
+        }
+        if !letterKeys.isEmpty {
+            refreshSymbols()
+        } else {
+            print("You win!")
         }
 
     }
     
     
-    @IBOutlet var symbolButtons: [UIButton]!
+    @IBOutlet var letterButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        for button in letterButtons {
+            button.layer.cornerRadius = 12
+        }
+
         refreshSymbols()
     }
     
     private func refreshSymbols() {
-        let randomSymbols = hangulSymbols.shuffled()[..<4]
-        print(randomSymbols)
-        topSymbolOutlet.text = randomSymbols[0].key
-        var index = 0
-        for button in symbolButtons.shuffled() {
-            button.setTitle(randomSymbols[index].value, for: UIControl.State.normal)
-            index += 1
+        let topLetter = letterKeys.dequeue() ?? "?"
+        
+        var randomLetters = [String]()
+        
+        let randomSelection = hangulLetters.keys.shuffled()[..<4]
+        
+        if randomSelection.contains(topLetter) {
+            randomLetters.append(contentsOf: randomSelection)
+        } else {
+            randomLetters.append(contentsOf: randomSelection[..<3])
+            randomLetters.append(topLetter)
+        }
+        
+        print(randomLetters)
+        mainLetterOutlet.text = topLetter
+
+        for (button, letterKey) in zip(letterButtons, randomLetters.shuffled()) {
+            button.setTitle(hangulLetters[letterKey], for: UIControl.State.normal)
         }
    
     }
     
-    private var hangulSymbols = ["ㄱ":"g",
+    lazy private var letterKeys = QueueArray<String>(elementArray: hangulLetters.keys.shuffled())
+    
+    private var hangulLetters = ["ㄱ":"g",
                                  "ㄴ":"n",
                                  "ㄷ":"d",
                                  "ㄹ":"l/r",
@@ -68,6 +91,51 @@ class ViewController: UIViewController {
                                  "ㅠ":"yu",
                                  "ㅡ":"eu",
                                  "ㅣ":"i"]
-    private var chosenSymbols = [String]()
+    private var chosenLetters = [String]()
 }
 
+
+protocol Queue {
+    
+    associatedtype Element
+    
+    //enqueue：add an object to the end of the Queue
+    mutating func enqueue(_ element: Element)
+    //dequeue：delete the object at the beginning of the Queue
+    mutating func dequeue() -> Element?
+    //isEmpty：check if the Queue is nil
+    var isEmpty: Bool { get }
+    //peek：return the object at the beginning of the Queue without removing it
+    var peek: Element? { get }
+    
+}
+
+struct QueueArray<T>: Queue {
+    mutating func enqueue(_ element: T) {
+        array.append(element)
+    }
+    
+    mutating func dequeue() -> T? {
+        return array.isEmpty ? nil : array.removeFirst()
+    }
+    
+    var isEmpty: Bool {
+        return array.isEmpty
+    }
+    
+    var peek: T? {
+        return array.first
+    }
+    
+    func shuffled() -> [T] {
+        return array.shuffled()
+    }
+    
+    typealias Element = T
+    
+    private var array: [T]
+    
+    init(elementArray: [Element]) {
+        array = elementArray
+    }
+}

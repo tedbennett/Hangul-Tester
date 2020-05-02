@@ -27,10 +27,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="1">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XKS-r6-8wR"/>
+                                    <action selector="touchUpLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JR2-he-0Yv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDd-fh-wj1">
@@ -38,10 +38,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="1">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sgc-Z7-Ka5"/>
+                                    <action selector="touchUpLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8eK-6T-jHa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-zO-vT8">
@@ -49,10 +49,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="1">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f9k-sH-XMM"/>
+                                    <action selector="touchUpLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCf-0f-3Jo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHw-qB-5Xi">
@@ -60,10 +60,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="1">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3ZF-QZ-QgE"/>
+                                    <action selector="touchUpLetter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75j-TW-EkU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,11 +71,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="topSymbolOutlet" destination="grO-U1-1qz" id="Tme-pT-paO"/>
-                        <outletCollection property="symbolButtons" destination="6rJ-pi-4If" collectionClass="NSMutableArray" id="YkU-gL-FWE"/>
-                        <outletCollection property="symbolButtons" destination="QDd-fh-wj1" collectionClass="NSMutableArray" id="0bi-vT-qiG"/>
-                        <outletCollection property="symbolButtons" destination="QHw-qB-5Xi" collectionClass="NSMutableArray" id="4tu-Lo-iS1"/>
-                        <outletCollection property="symbolButtons" destination="QeV-zO-vT8" collectionClass="NSMutableArray" id="Lsg-5v-DKw"/>
+                        <outlet property="mainLetterOutlet" destination="grO-U1-1qz" id="IQk-9O-7Aw"/>
+                        <outletCollection property="letterButtons" destination="QeV-zO-vT8" collectionClass="NSMutableArray" id="Dya-by-cVY"/>
+                        <outletCollection property="letterButtons" destination="QHw-qB-5Xi" collectionClass="NSMutableArray" id="Qgk-Xb-s1I"/>
+                        <outletCollection property="letterButtons" destination="QDd-fh-wj1" collectionClass="NSMutableArray" id="FnV-Wv-jbz"/>
+                        <outletCollection property="letterButtons" destination="6rJ-pi-4If" collectionClass="NSMutableArray" id="p20-Of-vZp"/>
+                        <outletCollection property="letterButtons" destination="QDd-fh-wj1" collectionClass="NSMutableArray" id="5mf-ul-xUo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
