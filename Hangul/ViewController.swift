@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TestViewController: UIViewController {
 
     @IBOutlet weak var mainLetterOutlet: UILabel!
 
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
             } else {
                 sender.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
                 letterKeys.enqueue(topLetter)
+                wrongLetters.append(topLetter)
             }
         }
         UIView.animate(withDuration: 0.3, delay: 0.3, options: [], animations: {
@@ -100,7 +101,7 @@ class ViewController: UIViewController {
                                  "ㅠ":"yu",
                                  "ㅡ":"eu",
                                  "ㅣ":"i"]
-    private var chosenLetters = [String]()
+    private var wrongLetters = [String]()
 }
 
 
