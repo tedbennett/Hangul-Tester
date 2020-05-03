@@ -15,7 +15,13 @@ class Test {
     
     private var letters = [String:String]()
     
-    private var wrongLetters = [String]()
+    var wrongLetters = [String:String]()
+    
+    var score : Double {
+        get {
+            return 1.0 - (Double(wrongLetters.keys.count) / Double(letters.keys.count))
+        }
+    }
     
     private var currentTopLetter = String()
     
@@ -27,7 +33,7 @@ class Test {
         if letters[currentTopLetter] == letterGuess {
             return true
         } else {
-            wrongLetters.append(currentTopLetter)
+            wrongLetters[currentTopLetter] = letters[currentTopLetter]
             orderedLetters.enqueue(currentTopLetter)
             return false
         }
