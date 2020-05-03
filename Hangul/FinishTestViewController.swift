@@ -19,6 +19,7 @@ class FinishTestViewController: UIViewController {
     }
     
     @IBOutlet weak var percentageWheelView: UIView!
+    @IBOutlet weak var graphParentView: UIView!
     @IBOutlet weak var percentageStringOutlet: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
