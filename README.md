@@ -11,3 +11,4 @@ Test yourself and learn the characters of the Hangul alphabet.
 - Adding support for Japanese hiragana and katakana
   - Having a switch between languages in a menu somewhere
   - Would be named 頑張って(*ganbatte*, "do your best!"), probably stylised in hiragana as がんばって
+- Device rotation support
