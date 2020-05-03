@@ -30,7 +30,7 @@ class TestViewController: UIViewController {
             self.mainLetterOutlet.alpha = 0
             self.letterButtons.forEach{ $0.alpha = 0}
         }) { (_) in
-            if self.test.isOver() {
+            if !self.test.isOver() {
                 self.refreshView()
                 UIView.animate(withDuration: 0.3, delay: 0.1, options: [], animations: {
                 self.mainLetterOutlet.alpha = 1
